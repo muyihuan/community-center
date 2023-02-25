@@ -1,0 +1,3 @@
+rootProject.name = 'community-center'
+include '1_content'
+include '2_aggregation'

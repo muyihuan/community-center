@@ -1,0 +1,127 @@
+plugins {
+    id 'java'
+    id 'maven'
+}
+
+group 'com.wanba.platform'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+// 定义自己的依赖
+dependencies {
+    implementation 'com.wanba:wb-config-util'
+    implementation 'com.wanba:wb-cache'
+    implementation 'com.wanba:wb-async'
+    implementation 'com.wanba.platform:wb-ms-util'
+    implementation 'com.wanba.platform:wb-schedule-common'
+    implementation 'com.wanba.infrast:wb-chat-common:1.0-SNAPSHOT'
+    implementation 'com.wanba.platform:wb-job-queue'
+    implementation 'com.wanba.platform:wb-counter-client:1.0-SNAPSHOT'
+    implementation('com.wanba.platform:wb-intimacy-rpc-client:1.0-SNAPSHOT')
+    implementation 'com.wanba.platform:wb-antispam-common:1.0-SNAPSHOT'
+    implementation 'com.wanba.platform:wb-judge-rpc-client:1.0-SNAPSHOT'
+    implementation 'com.wanba.platform:wb-comment-rpc-client:1.0-SNAPSHOT'
+    implementation 'com.wanba.platform:wb-antispam-rpc-client:1.0-SNAPSHOT'
+    implementation 'com.wanba.platform:wb-task-rpc-client:1.0-SNAPSHOT'
+    implementation 'com.wanba.bubble:wb-bubble-rpc-client:1.1-SNAPSHOT'
+    implementation('com.wanba:wb-domain-common')
+    implementation('com.wanba.platform:wb-unify-jump-common')
+    implementation 'com.wanba.platform:wb-activity-rpc-client:1.0-SNAPSHOT'
+    implementation 'com.wanba.platform:wb-push-rpc-client:1.0-SNAPSHOT'
+    compile ('org.elasticsearch.client:elasticsearch-rest-high-level-client:6.3.2') {
+        force = true
+    }
+    compile ('org.elasticsearch.client:elasticsearch-rest-client:6.3.2') {
+        force = true
+    }
+    compile ('org.elasticsearch:elasticsearch:6.3.2') {
+        force = true
+    }
+    implementation 'com.wanba:wb-mq'
+    implementation 'com.wanba:wb-hotfeed-common:1.0-SNAPSHOT'
+    implementation 'com.wanba.prop:wb-prop-rpc-client:1.0-SNAPSHOT'
+    implementation 'com.wanba:wb-db'
+    implementation('com.wanba.liveroom:wb-liveroom-rpc-client:1.0-SNAPSHOT')
+    implementation('com.wanba.platform:wb-liveroom-margin-rpc-client:1.0-SNAPSHOT')
+    implementation('com.wb.platform:wb-personas-rpc-client:1.0-SNAPSHOT')
+    implementation('com.wanba.platform:wb-liveroom-margin-rpc-client:1.0-SNAPSHOT')
+    implementation("com.wanba.platform:wb-audit-common:1.0-SNAPSHOT")
+    implementation('com.wanba.platform:wb-dbms-rpc-client:1.0-SNAPSHOT')
+    implementation('com.wanba.platform:wb-meetvoice-rpc-client:1.0-SNAPSHOT')
+    implementation 'com.wanba:wb-db-mybatis'
+    // 拼装游戏统一跳转
+    implementation('com.wanba.game:wb-game-common')
+    // 审核平台接口
+    implementation 'com.wb.pf:pf-soc-audit-rpc-client:1.0-SNAPSHOT'
+    // 用户状态接口
+    implementation 'com.wanba.platform:pf-status-rpc-client:1.0-SNAPSHOT'
+    // 老监控组件
+    implementation 'com.wb.monitor:wb-monitor-client'
+    implementation('com.wanba.platform:wb-feed-common:1.0-SNAPSHOT')
+    implementation("com.wanba.platform:wb-upvote-rpc-client:1.0-SNAPSHOT")
+    implementation('com.wanba.platform:wb-feed-common:1.0-SNAPSHOT')
+    implementation("com.wanba:wb-like-rpc-client:1.0-SNAPSHOT")
+    implementation('com.wanba.platform:wb-msg-rpc-client:1.0-SNAPSHOT')
+    implementation 'com.wanba.platform:wb-platform-common'
+    implementation 'org.redisson:redisson'
+    implementation 'redis.clients:jedis'
+    implementation 'com.wanba:wb-kafka'
+    // datahub上报
+    implementation 'com.wb.zeus:zeus-datahub'
+    implementation 'com.wb.pf:pf-order-rpc-client:1.0-SNAPSHOT'
+    implementation 'com.wanba.platform:wb-privacy-rpc-client:1.0-SNAPSHOT'
+
+
+    // 内部
+    implementation project(':wb-feed-rpc-client')
+    implementation project(':wb-tag-rpc-client')
+    implementation project(':wb-feedshare-rpc-client')
+    implementation project(':wb-audio-rpc-client')
+    implementation project(':wb-playcard-rpc-client')
+    implementation project(':wb-repost-rpc-client')
+    implementation project(":wb-hotfeed-rpc-client")
+    implementation project(':wb-feedvote-rpc-client')
+    // 属性
+    implementation project(':wb-playcard-service')
+    implementation project(':wb-tag-service')
+    // ugc
+    implementation project(':wb-repost-service')
+    implementation project(':wb-audio-service')
+    implementation project(':wb-album-service')
+    implementation project(':wb-link-service')
+    implementation project(':wb-status-service')
+
+
+    // 单元测试使用
+    testCompile ('org.springframework.boot:spring-boot-starter-test:2.0.2.RELEASE') {
+        implementation 'com.wanba.game:wb-avatar-rpc-client:1.0-SNAPSHOT'
+        exclude group:'org.slf4j' , module:'slf4j-log4j12'
+        exclude group:'ch.qos.logback' , module:'logback-classic'
+    }
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+    testCompile 'org.mockito:mockito-core:3.9.0'
+    testCompile 'org.powermock:powermock-core:2.0.0-RC.4'
+    testCompile 'org.powermock:powermock-module-junit4:2.0.0-beta.5'
+    testCompile 'org.powermock:powermock-api-mockito2:2.0.0-beta.5'
+    testCompile 'org.mockito:mockito-inline:2.15.0'
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
+    testCompile 'com.h2database:h2:1.4.199'
+    testCompile ('org.mybatis.spring.boot:mybatis-spring-boot-starter-test:1.3.0') {
+        exclude group:'org.slf4j' , module:'slf4j-log4j12'
+        exclude group:'ch.qos.logback' , module:'logback-classic'
+    }
+    compile ('com.wanba.rpc:wb-rpc-server:1.5-SNAPSHOT')
+    compile ('com.wanba.rpc:wb-rpc-server-common:1.2-SNAPSHOT')
+}
+
+apply plugin: 'io.spring.dependency-management'
+dependencyManagement {
+    resolutionStrategy {
+        cacheChangingModulesFor 0, 'seconds'
+    }
+    imports {
+        mavenBom('com.wb.zeus:zeus-root:1.1-SNAPSHOT')
+    }
+}

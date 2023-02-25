@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'maven'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    group 'com.github.muyi.community-center'
+    version '0.0.1'
+
+    // 仓库地址
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    dependencies {
+        annotationProcessor('org.projectlombok:lombok:1.18.10')
+        compileOnly('org.projectlombok:lombok:1.18.10')
+        annotationProcessor('org.projectlombok:lombok:1.18.10')
+        compileOnly('org.projectlombok:lombok:1.18.10')
+        implementation('org.slf4j:slf4j-api:1.7.26')
+        // 日志采用logback
+        implementation('ch.qos.logback:logback-classic:1.1.8')
+        implementation('commons-collections:commons-collections:3.2.1')
+
+
+        // ...
+
+
+        // 单元测试
+        testAnnotationProcessor('org.projectlombok:lombok:1.18.10')
+        testImplementation('org.projectlombok:lombok:1.18.10')
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.10'
+        testImplementation 'org.projectlombok:lombok:1.18.10'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
