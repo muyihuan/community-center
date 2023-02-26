@@ -1,3 +1,6 @@
 rootProject.name = 'community-center'
 include '1_content'
-include '2_aggregation'
+include '3_recommend'
+include '4_interaction'
+include '5_inspiration'
+include '6_infrastructure'
