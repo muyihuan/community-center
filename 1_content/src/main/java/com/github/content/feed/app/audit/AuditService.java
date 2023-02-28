@@ -1,9 +1,9 @@
 package com.github.content.feed.app.audit;
 
 import com.github.content.feed.app.audit.enums.FeedAuditResultEnum;
-import com.github.content.feed.domains.FeedDomainService;
-import com.github.content.feed.domains.enums.FeedSystemPrivilegeEnum;
-import com.github.content.feed.domains.model.FeedSourceModel;
+import com.github.content.feed.domain.FeedDomainService;
+import com.github.content.feed.domain.enums.FeedSystemPrivilegeEnum;
+import com.github.content.feed.domain.model.FeedSourceModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

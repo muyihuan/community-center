@@ -4,7 +4,7 @@ import com.github.content.feed.app.checker.CheckResult;
 import com.github.content.feed.app.checker.CreateProcessorChecker;
 import com.github.content.feed.app.model.CreateFeedResult;
 import com.github.content.feed.app.processor.CreateProcessorManager;
-import com.github.content.feed.domains.FeedDomainService;
+import com.github.content.feed.domain.FeedDomainService;
 import com.github.content.feed.exception.FeedException;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;

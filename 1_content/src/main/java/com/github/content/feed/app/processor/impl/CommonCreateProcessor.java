@@ -1,7 +1,7 @@
 package com.github.content.feed.app.processor.impl;
 
-import com.github.content.feed.domains.enums.FeedContentTypeEnum;
-import com.github.content.feed.domains.enums.FeedSourceTypeEnum;
+import com.github.content.feed.domain.enums.FeedContentTypeEnum;
+import com.github.content.feed.domain.enums.FeedSourceTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
