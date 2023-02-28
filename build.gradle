@@ -16,6 +16,7 @@ allprojects {
     repositories {
         mavenCentral()
         mavenLocal()
+        maven { url 'http://repo.spring.io/milestone' }
     }
 
     dependencies {
@@ -27,6 +28,7 @@ allprojects {
         // 日志采用logback
         implementation('ch.qos.logback:logback-classic:1.1.8')
         implementation('commons-collections:commons-collections:3.2.1')
+        implementation('org.springframework:spring-context:4.2.4.RELEASE')
 
 
         // ...

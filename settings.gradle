@@ -1,4 +1,5 @@
 rootProject.name = 'community-center'
+include '0_community_center_open_api'
 include '1_content'
 include '3_recommend'
 include '4_interaction'
