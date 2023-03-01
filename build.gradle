@@ -22,8 +22,6 @@ allprojects {
     dependencies {
         annotationProcessor('org.projectlombok:lombok:1.18.10')
         compileOnly('org.projectlombok:lombok:1.18.10')
-        annotationProcessor('org.projectlombok:lombok:1.18.10')
-        compileOnly('org.projectlombok:lombok:1.18.10')
         implementation('org.slf4j:slf4j-api:1.7.26')
         // 日志采用logback
         implementation('ch.qos.logback:logback-classic:1.1.8')

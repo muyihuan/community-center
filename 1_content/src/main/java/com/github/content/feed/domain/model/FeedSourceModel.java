@@ -4,11 +4,14 @@ import com.github.content.feed.domain.enums.FeedContentTypeEnum;
 import com.github.content.feed.domain.enums.FeedPrivilegeEnum;
 import com.github.content.feed.domain.enums.FeedSourceTypeEnum;
 import com.github.content.feed.domain.enums.FeedSystemPrivilegeEnum;
+import com.github.content.feed.domain.model.property.AtInfo;
+import com.github.content.feed.domain.model.property.ExtraInfo;
+import com.github.content.feed.domain.model.property.LbsInfo;
+import com.github.content.feed.domain.model.ugc.*;
 import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * feed模型
@@ -58,39 +61,9 @@ public class FeedSourceModel {
     private FeedSourceTypeEnum sourceType;
 
     /**
-     * 作者昵称
-     */
-    @Deprecated
-    private String userName;
-
-    /**
-     * 作者头像
-     */
-    @Deprecated
-    private String userIcon;
-
-    /**
-     * 性别
-     */
-    @Deprecated
-    private String gender;
-
-    /**
-     * feed的送花数量
-     */
-    @Deprecated
-    private Integer roseCount;
-
-    /**
      * feed的中文字内容
      */
     private String textContent;
-
-    /**
-     * feed的topicId 0表示没有topic，大于0表示有topic并且为对应topic的id
-     */
-    @Deprecated
-    private Integer topicId;
 
     /**
      * feed的创建时间
@@ -128,32 +101,6 @@ public class FeedSourceModel {
     private List<AtInfo> atInfoList;
 
     /**
-     * 同类签信息
-     */
-    private LabelInfo labelInfo;
-
-    /**
-     * 词卡信息
-     */
-    private CardInfo cardInfo;
-
-    /**
-     * 场景标识别
-     */
-    private Integer sceneType;
-
-    /**
-     * 场景参数
-     */
-    private Map sceneParam;
-
-    /**
-     * 猜猜信息
-     */
-    @Deprecated
-    private LotteryContentModel lottery;
-
-    /**
      * 照片信息
      */
     private AlbumImageContentModel albumImage;
@@ -164,29 +111,14 @@ public class FeedSourceModel {
     private MultiImageContentModel multiImage;
 
     /**
-     * 花魁信息
-     */
-    private RoseChampionContentModel roseChampion;
-
-    /**
      * 网页链接信息
      */
     private LinkContentModel webLink;
 
     /**
-     * 画猜信息
-     */
-    private PaintContentModel paint;
-
-    /**
      * 视频feed
      */
     private VideoContentModel video;
-
-    /**
-     * 徽章
-     */
-    private MedalContentModel medal;
 
     /**
      * 转发信息
