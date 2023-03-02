@@ -1,5 +1,7 @@
 package com.github.content.ugc.domain.model;
 
+import com.github.content.ugc.domain.enums.ContentCarrierTypeEnum;
+import com.github.content.ugc.domain.enums.UgcTypeEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,24 +22,29 @@ public class UgcModel {
     private Long id;
 
     /**
-     * ugc类型(文字、图片、音频、视频、链接).
+     * 产生该内容的用户.
      */
-    private Integer ugcType;
+    private String uid;
+
+    /**
+     * ugc内容类型(文字、图片、音频、视频).
+     */
+    private UgcTypeEnum ugcType;
 
     /**
      * 内容.
      */
-    private String content;
+    private Content content;
 
     /**
      * 对应的载体类别.
      */
-    private Integer sourceCarrierType;
+    private ContentCarrierTypeEnum sourceCarrierType;
 
     /**
      * 对应的载体ID.
      */
-    private String  sourceCarrierId;
+    private String sourceCarrierId;
 
     /**
      * 扩展信息.
