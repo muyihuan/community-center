@@ -14,7 +14,7 @@ public class AuditFacade {
     /**
      * 同步审核文本
      */
-    public AuditResultEnum syncAuditText(String uid, String message, String bizId) {
+    public AuditResultEnum syncAuditText(String uid, String message) {
         return AuditResultEnum.REJECTED;
     }
 }

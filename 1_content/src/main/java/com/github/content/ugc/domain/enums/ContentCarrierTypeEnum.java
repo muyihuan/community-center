@@ -11,7 +11,7 @@ import lombok.Getter;
 public enum ContentCarrierTypeEnum {
 
     NONE(0, "无"),
-    FEED(1, "feed"),
+    FEED(1, "feed动态"),
 
     ;
 

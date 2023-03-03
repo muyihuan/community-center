@@ -12,19 +12,21 @@ import org.springframework.stereotype.Service;
 /**
  * feed的审核和审核回调处理.
  *
- *  时序图：
+ *  时序图： 人审(R) 机审(M)
  *
  *    feed服务            审核服务            三方(机审核)           审核后台(人审)
  *       \                  \                  \                     \
- *       \ ----提交审核-----> \ ----提交审核-----> \                     \
- *       \                  \ ---------------同步到后台------------->  \
- *       \                  \ <---审核结果-----  \                     \
+ *       \ ----submit-----> \ ----submit-----> \                     \
  *       \                  \                  \                     \
- *       \ <---机审结果-----  \                                        \
- *       \                  \                                        \
- *       \                  \ <---------------审核结果---------------- \
- *       \                  \                                        \
- *       \ <---人审结果-----  \                                        \
+ *       \                  \ -----------------sync--------------->  \
+ *       \                  \                  \                     \
+ *       \                  \ <--(M)callback-  \                     \
+ *       \                  \                  \                     \
+ *       \ <--(M)callback-  \                  \                     \
+ *       \                  \                  \                     \
+ *       \                  \ <-------------(R)callback------------- \
+ *       \                  \                  \                     \
+ *       \ <--(R)callback-  \                  \                     \
  *
  * @author yanghuan
  */
@@ -37,7 +39,16 @@ public class AuditService {
     private FeedDomainService feedDomainService;
 
     /**
-     * 提交审核
+     * 同步审核feed文本.
+     *
+     * @return  true: 审核通过，false:审核拒绝.
+     */
+    public boolean syncAuditText(String uid, String message) {
+        return false;
+    }
+
+    /**
+     * 提交审核.
      */
     public void auditFeed(long feedId, AbstractFeedCreateBO feedCreateBO) {
 
@@ -45,7 +56,7 @@ public class AuditService {
     }
 
     /**
-     * 审核回调统一处理
+     * 审核回调统一处理.
      */
     public void auditCallback(Long feedId, FeedAuditResultEnum auditResult) {
         // lock

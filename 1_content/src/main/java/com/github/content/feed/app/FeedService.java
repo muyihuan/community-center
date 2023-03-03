@@ -41,7 +41,7 @@ public class FeedService {
 
     /**
      * 创建feed 核心流程如下：
-     * 校验 -> 创建ugc前置处理 -> 创建ugc -> 创建feed前置处理 -> 创建feed -> feed后置处理 -> 生命周期通知.
+     * 校验 -> 创建feed前置处理 -> 创建feed -> feed后置处理 -> 生命周期变化通知.
      */
     public CreateFeedResult createFeed(AbstractFeedCreateBO feedCreateBO) {
         CreateFeedResult result = new CreateFeedResult();
@@ -87,7 +87,7 @@ public class FeedService {
             throw new FeedException();
         }
 
-        if(!StringUtils.equals(uid, feedModel.getUid())) {
+        if(!StringUtils.equals(uid, feedModel.getFeedUid())) {
             throw new FeedException();
         }
 
@@ -107,7 +107,7 @@ public class FeedService {
             throw new FeedException();
         }
 
-        if(!StringUtils.equals(uid, feedModel.getUid())) {
+        if(!StringUtils.equals(uid, feedModel.getFeedUid())) {
             throw new FeedException();
         }
 
@@ -194,8 +194,8 @@ public class FeedService {
     }
 
     /**
-     * 批量获取feed信息，从这出去的不能有被删除的feed
-     * 注：被删除的feed只能feed领域内才可以访问，外部业务均不许访问，也绝对不可以对外开放出去否则以后会存在很大问题
+     * 批量获取feed信息，从这出去的不能有被删除的feed.
+     * 注：被删除的feed只能feed领域内才可以访问，外部业务均不许访问，也绝对不可以对外开放出去否则以后会存在很大问题.
      */
     public List<FeedModel> batchGetFeeds(List<Long> feedIds) {
         if(CollectionUtils.isEmpty(feedIds)) {

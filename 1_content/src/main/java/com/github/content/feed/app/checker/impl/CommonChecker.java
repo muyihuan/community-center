@@ -1,5 +1,6 @@
 package com.github.content.feed.app.checker.impl;
 
+import com.github.content.feed.app.audit.AuditService;
 import com.github.content.feed.app.checker.CheckResult;
 import com.github.content.feed.app.checker.Checker;
 import com.github.content.feed.app.model.create.AbstractFeedCreateBO;
@@ -8,6 +9,7 @@ import com.github.content.feed.domain.enums.FeedSystemPrivilegeEnum;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,6 +21,9 @@ import org.springframework.stereotype.Service;
 public class CommonChecker implements Checker {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CommonChecker.class);
+
+    @Autowired
+    private AuditService auditService;
 
     @Override
     public CheckResult check(AbstractFeedCreateBO feedCreateBO) {
@@ -44,7 +49,7 @@ public class CommonChecker implements Checker {
                 feedCreateBO.getContentType() == FeedContentTypeEnum.FORWARD)
             {
                 if(StringUtils.isNotEmpty(content)) {
-                    boolean result = this.syncAuditText(feedCreateBO.getUid(), content);
+                    boolean result = auditService.syncAuditText(feedCreateBO.getUid(), content);
                     if (!result) {
                         return CheckResult.fail("您发布的内容有违规信息，请重新编辑后发送");
                     }
@@ -76,14 +81,6 @@ public class CommonChecker implements Checker {
      */
     private FeedSystemPrivilegeEnum getFeedInitState(AbstractFeedCreateBO feed) {
         return FeedSystemPrivilegeEnum.DEF;
-    }
-
-    /**
-     * 审核feed文本
-     * @return  true: 审核通过，false:审核拒绝
-     */
-    private boolean syncAuditText(String uid, String message) {
-        return false;
     }
 
     /**

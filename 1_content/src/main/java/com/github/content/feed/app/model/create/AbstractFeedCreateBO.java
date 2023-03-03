@@ -73,24 +73,24 @@ public abstract class AbstractFeedCreateBO {
     protected String sourceId;
 
     /**
-     * 是否是系统产生的feed，true：系统产生的feed，不是用户创建的、false：用户创建的（默认）
+     * 是否是系统产生的feed，true：系统产生的feed，不是用户创建的、false：用户创建的（默认）.
      */
     protected Boolean isSystemFeed;
 
     /**
-     * 来源，例如广场、朋友圈、话题里发布的feed
+     * 来源，例如广场、朋友圈、话题里发布的feed.
      */
     protected String sourceFrom;
 
     /**
-     * feed扩展项
+     * feed扩展项.
      */
     protected ExtraInfoBO extraInfo;
 
     /**
-     * 子类必须设置 contentType
+     * 子类必须设置 contentType.
      *
-     * @param contentType {@link FeedContentTypeEnum}
+     * @param contentType {@link FeedContentTypeEnum}.
      */
     public AbstractFeedCreateBO(FeedContentTypeEnum contentType) {
         this.contentType = contentType;
