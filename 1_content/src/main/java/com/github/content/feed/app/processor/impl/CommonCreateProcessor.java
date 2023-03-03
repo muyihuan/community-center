@@ -50,7 +50,7 @@ public class CommonCreateProcessor extends AbstractEmptyCreateProcessor {
         auditService.auditFeed(feedId, feedCreateModel);
 
         // 创建ugc.
-        ugcDomainService.createUgc(feedCreateModel.getUid(), null, ContentCarrierTypeEnum.FEED, String.valueOf(feedId));
+        Long ugcId = ugcDomainService.createUgc(feedCreateModel.getUid(), null, ContentCarrierTypeEnum.FEED, String.valueOf(feedId));
 
         executor.execute(() -> {
             // 如果该feed走的是先发后审，那么直接认为机器审核通过.
