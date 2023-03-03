@@ -5,7 +5,6 @@ import com.github.content.feed.domain.model.property.AtInfo;
 import com.github.content.feed.domain.model.property.ExtraInfo;
 import com.github.content.feed.domain.model.property.LbsInfo;
 import com.github.content.feed.domain.model.ugc.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -2,9 +2,6 @@ package com.github.content.feed.domain.model.ugc;
 
 import lombok.Data;
 
-import java.util.LinkedList;
-import java.util.Map;
-
 /**
  * 转发信息.
  *
