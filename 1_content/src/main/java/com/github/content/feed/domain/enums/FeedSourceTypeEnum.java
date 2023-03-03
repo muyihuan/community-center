@@ -3,7 +3,8 @@ package com.github.content.feed.domain.enums;
 import lombok.Getter;
 
 /**
- * feed 来源的类型
+ * 来源的类型.
+ *
  * @author yanghuan
  */
 @Getter
@@ -18,15 +19,5 @@ public enum FeedSourceTypeEnum {
     FeedSourceTypeEnum(int code, String desc) {
         this.code = code;
         this.desc = desc;
-    }
-
-    public static FeedSourceTypeEnum getByCode(int code) {
-        for (FeedSourceTypeEnum value : values()) {
-            if (value.getCode() == code) {
-                return value;
-            }
-        }
-
-        throw new RuntimeException("FeedSourceType can't find : " + code);
     }
 }

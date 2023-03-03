@@ -3,17 +3,17 @@ package com.github.content.feed.domain.enums;
 import lombok.Getter;
 
 /**
- * feed 可见性.
+ * feed 可见范围.
  *
  * @author yanghuan
  */
 @Getter
 public enum FeedPrivilegeEnum {
 
-    FRIEND_VIEW(0, "仅好友可见"),
-    SQUARE_VIEW(1, "全部可见"),
-    STRANGER_VIEW(2, "仅陌生人可见"),
-    SELF_VIEW(3, "仅自己可见")
+    SELF_VISIBLE(0, "仅自己可见"),
+    FRIEND_VISIBLE(1, "仅好友可见"),
+    STRANGER_VISIBLE(2, "仅陌生人可见"),
+    ALL_VISIBLE(3, "全部人可见"),
     ;
 
     private final int code;

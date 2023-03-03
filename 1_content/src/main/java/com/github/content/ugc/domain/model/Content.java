@@ -9,6 +9,11 @@ import com.github.content.ugc.domain.enums.UgcTypeEnum;
  */
 public interface Content {
 
+    /**
+     * 对应ugc的类型.
+     *
+     * @return ugc的类型.
+     */
     UgcTypeEnum getUgcType();
 }
 

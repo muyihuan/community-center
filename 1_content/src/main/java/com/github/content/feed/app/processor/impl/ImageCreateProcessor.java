@@ -1,12 +1,13 @@
 package com.github.content.feed.app.processor.impl;
 
+import com.github.content.feed.app.model.create.AbstractFeedCreateBO;
+import com.github.content.feed.domain.enums.FeedContentTypeEnum;
 import org.springframework.stereotype.Service;
 
 /**
+ * 图片feed创建特有处理.
+ *
  * @author yanghuan
- * @version 1.0.0
- * @Description 多图feed创建处理
- * @createTime 2021年07月05日 17:44:00
  */
 @Service
 public class ImageCreateProcessor extends AbstractEmptyCreateProcessor {
@@ -19,11 +20,6 @@ public class ImageCreateProcessor extends AbstractEmptyCreateProcessor {
     @Override
     public FeedContentTypeEnum matchContentType() {
         return FeedContentTypeEnum.IMAGE;
-    }
-
-    @Override
-    public FeedSourceTypeEnum matchSourceType() {
-        return FeedSourceTypeEnum.IMAGE_MULTI;
     }
 
     @Override

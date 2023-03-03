@@ -1,14 +1,16 @@
 package com.github.content.ugc.domain.model;
 
 import com.github.content.ugc.domain.enums.UgcTypeEnum;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 音频内容.
  *
  * @author yanghuan
  */
-@Data
+@Getter
+@Setter
 public class Audio implements Content {
 
     /**
@@ -25,11 +27,6 @@ public class Audio implements Content {
      * 音频大小.
      */
     private Integer audioSize;
-
-    /**
-     * 兼容老代码.
-     */
-    private String extra;
 
     @Override
     public UgcTypeEnum getUgcType() {

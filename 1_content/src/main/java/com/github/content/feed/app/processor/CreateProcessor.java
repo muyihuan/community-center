@@ -1,67 +1,49 @@
 package com.github.content.feed.app.processor;
 
+import com.github.content.feed.app.model.create.AbstractFeedCreateBO;
+import com.github.content.feed.domain.enums.FeedContentTypeEnum;
+
 /**
- * 创建处理器，可以对创建UGC前、创建FEED前、创建 FEED 后进行扩展.
+ * feed创建处理器: 创建UGC前 => 创建FEED前 => 创建FEED后.
  *
  * @author yanghuan
  */
 public interface CreateProcessor {
 
     /**
-     * 创建UGC前
-     * @param feedCreateModel 参数
+     * 创建FEED前.
+     *
+     * @param feedCreateBO feed创建参数.
      */
-    void beforeCreateUgc(AbstractFeedCreateBO feedCreateModel);
+    void beforeCreateFeed(AbstractFeedCreateBO feedCreateBO);
 
     /**
-     * 创建FEED前
-     * @param feedCreateModel 参数
+     * 创建FEED后.
+     *
+     * @param feedId feed的ID.
+     * @param feedCreateBO feed创建参数.
      */
-    void beforeCreateFeed(AbstractFeedCreateBO feedCreateModel);
+    void afterCreateFeed(long feedId, AbstractFeedCreateBO feedCreateBO);
 
     /**
-     * 创建FEED后
-     * @param feedId feedid
-     * @param feedCreateModel 参数
-     */
-    void afterCreateFeed(long feedId, AbstractFeedCreateBO feedCreateModel);
-
-    /**
-     * 返回 null 匹配所有
-     * @return
+     * 返回 null 匹配所有.
      */
     FeedContentTypeEnum matchContentType();
 
     /**
-     * 返回 null 匹配所有
-     * @return
-     */
-    FeedSourceTypeEnum matchSourceType();
-
-    /**
-     * 数值越大优先级越低
-     * @return 返回
+     * 数值越大优先级越低.
+     *
+     * @return 优先级.
      */
     int order();
 
     /**
-     * 匹配
-     * @param abstractFeedCreateBO
-     * @return
+     * 处理流程匹配.
+     *
+     * @param abstractFeedCreateBO feed创建参数.
+     * @return 是否匹配.
      */
     default boolean match(AbstractFeedCreateBO abstractFeedCreateBO) {
-        boolean contentTypeMatch;
-        boolean sourceTypeMatch;
-        if (matchContentType() == null) {
-            contentTypeMatch = true;
-        } else {
-            contentTypeMatch = matchContentType() == abstractFeedCreateBO.getContentType();
-        }
-        if (matchSourceType() == null) {
-            sourceTypeMatch = true;
-        } else {
-            sourceTypeMatch = matchSourceType() == abstractFeedCreateBO.getSourceType();
-        }
-        return contentTypeMatch && sourceTypeMatch;
+        return matchContentType() == null || (matchContentType() == abstractFeedCreateBO.getContentType());
     }
 }

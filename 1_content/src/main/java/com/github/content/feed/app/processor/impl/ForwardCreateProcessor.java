@@ -1,23 +1,25 @@
 package com.github.content.feed.app.processor.impl;
 
+import com.github.content.feed.app.model.create.AbstractFeedCreateBO;
+import com.github.content.feed.app.model.create.ForwardFeedCreateBO;
+import com.github.content.feed.domain.FeedDomainService;
 import com.github.content.feed.domain.enums.FeedContentTypeEnum;
-import com.github.content.feed.domain.enums.FeedSourceTypeEnum;
+import com.github.content.feed.domain.model.FeedModel;
+import com.github.content.feed.exception.FeedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 /**
+ * 转发feed创建特有处理.
+ *
  * @author yanghuan
- * @version 1.0.0
- * @Description 转发feed创建处理
- * @createTime 2021年05月10日 17:44:00
  */
 @Service
 public class ForwardCreateProcessor extends AbstractEmptyCreateProcessor {
 
-    private ForwardService forwardService = BeanFactory.get(ForwardService.class);
-
     @Autowired
-    private FeedDomainService feedService;
+    private FeedDomainService feedDomainService;
 
     @Override
     public void beforeCreateFeed(AbstractFeedCreateBO feedCreateModel) {
@@ -29,24 +31,17 @@ public class ForwardCreateProcessor extends AbstractEmptyCreateProcessor {
 
     @Override
     public void afterCreateFeed(long feedId, AbstractFeedCreateBO feedCreateModel) {
-        FeedSourceModel feedSource = feedService.getFeed(feedId);
-        if(feedSource == null) {
-            throw new FeedException(FeedContentError.FEED_NOT_FOUND);
+        FeedModel feedModel = feedDomainService.getFeed(feedId);
+        if(feedModel == null) {
+            throw new FeedException();
         }
 
         Long originFeedId = ((ForwardFeedCreateBO) feedCreateModel).getForwardFeedId();
-        forwardService.saveForwardFeed(feedId, originFeedId);
-        forwardService.saveForwardInfo(feedSource, originFeedId);
     }
 
     @Override
     public FeedContentTypeEnum matchContentType() {
         return FeedContentTypeEnum.FORWARD;
-    }
-
-    @Override
-    public FeedSourceTypeEnum matchSourceType() {
-        return FeedSourceTypeEnum.REPOST;
     }
 
     @Override

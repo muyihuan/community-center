@@ -3,37 +3,25 @@ package com.github.content.feed.domain.model.property;
 import lombok.Data;
 
 /**
- * 艾特信息
- * @author edz
+ * @ 信息.
+ *
+ * @author yanghuan
  */
 @Data
 public class AtInfo {
 
     /**
-     * at的用户id
+     * @ 的用户id.
      */
     private String uid;
 
     /**
-     * at的用户名
+     * @ 的用户名称.
      */
     private String userName;
 
     /**
-     * 颜色，亲密度
+     * @ 文字颜色.
      */
     private String atColor;
-
-    /**
-     * 亲密度关系类型
-     */
-    private int relationType;
-
-    public AtInfo() {
-    }
-
-    public AtInfo(String uid, String userName) {
-        this.uid = uid;
-        this.userName = userName;
-    }
 }

@@ -1,6 +1,6 @@
 package com.github.content.feed.infra;
 
-import com.github.content.feed.infra.model.UserSimpleInfo;
+import com.github.content.feed.infra.model.UserInfo;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserFacade {
 
-    public UserSimpleInfo getUserInfo(String uid) {
+    public UserInfo getUserInfo(String uid) {
         return null;
     }
 }

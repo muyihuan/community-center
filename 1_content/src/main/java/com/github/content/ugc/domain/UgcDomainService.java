@@ -1,6 +1,9 @@
 package com.github.content.ugc.domain;
 
+import com.github.content.ugc.domain.enums.ContentCarrierTypeEnum;
+import com.github.content.ugc.domain.model.Content;
 import com.github.content.ugc.domain.model.UgcModel;
+import org.springframework.stereotype.Service;
 
 /**
  * ugc领域.
@@ -11,6 +14,7 @@ import com.github.content.ugc.domain.model.UgcModel;
  *
  * @author yanghuan
  */
+@Service
 public class UgcDomainService {
 
     /**
@@ -18,8 +22,8 @@ public class UgcDomainService {
      *
      * @return ugc的ID.
      */
-    public Long createUgc(UgcModel ugcModel) {
-        return 1L;
+    public Long createUgc(String uid, Content content, ContentCarrierTypeEnum carrierType, String carrierId) {
+        return 0L;
     }
 
     /**

@@ -1,7 +1,8 @@
 package com.github.content.feed.exception;
 
 /**
- * 起始code 20001
+ * 起始code 20001.
+ *
  * @author yanghuan
  */
 public enum FeedErrorCode {
