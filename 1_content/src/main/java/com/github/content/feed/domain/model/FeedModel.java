@@ -1,10 +1,15 @@
 package com.github.content.feed.domain.model;
 
-import com.github.content.feed.domain.enums.*;
+import com.github.content.feed.domain.enums.FeedContentTypeEnum;
+import com.github.content.feed.domain.enums.FeedPrivilegeEnum;
+import com.github.content.feed.domain.enums.FeedStateEnum;
+import com.github.content.feed.domain.enums.FeedSystemPrivilegeEnum;
 import com.github.content.feed.domain.model.property.AtInfo;
 import com.github.content.feed.domain.model.property.ExtraInfo;
 import com.github.content.feed.domain.model.property.LbsInfo;
 import com.github.content.feed.domain.model.ugc.*;
+import com.github.content.ugc.domain.ContentCarrier;
+import com.github.content.ugc.domain.enums.ContentCarrierTypeEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +23,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class FeedModel {
+public class FeedModel implements ContentCarrier {
 
     /**
      * feed的ID.
@@ -49,16 +54,6 @@ public class FeedModel {
      * feed的状态.
      */
     private FeedStateEnum state;
-
-    /**
-     * 来源场景类型.
-     */
-    private FeedSourceTypeEnum sourceType;
-
-    /**
-     * 来源场景对应的ID.
-     */
-    private String sourceId;
 
     /**
      * 话题信息.
@@ -106,6 +101,11 @@ public class FeedModel {
     private AudioContent audio;
 
     /**
+     * 来源场景.
+     */
+    private String sourceFrom;
+
+    /**
      * 扩展.
      */
     private ExtraInfo extraInfo;
@@ -114,4 +114,14 @@ public class FeedModel {
      * 创建时间
      */
     private Date createTime;
+
+    @Override
+    public ContentCarrierTypeEnum getCarrierType() {
+        return ContentCarrierTypeEnum.FEED;
+    }
+
+    @Override
+    public Long getCarrierId() {
+        return feedId;
+    }
 }

@@ -2,7 +2,6 @@ package com.github.content.feed.app.model.create;
 
 import com.github.content.feed.domain.enums.FeedContentTypeEnum;
 import com.github.content.feed.domain.enums.FeedPrivilegeEnum;
-import com.github.content.feed.domain.enums.FeedSourceTypeEnum;
 import com.github.content.feed.domain.enums.FeedSystemPrivilegeEnum;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -61,16 +60,6 @@ public abstract class AbstractFeedCreateBO {
      * 地理位置信息.
      */
     protected LbsBO lbs;
-
-    /**
-     * 来源场景类型.
-     */
-    protected FeedSourceTypeEnum sourceType;
-
-    /**
-     * 来源场景对应业务的ID.
-     */
-    protected String sourceId;
 
     /**
      * 是否是系统产生的feed，true：系统产生的feed，不是用户创建的、false：用户创建的（默认）.

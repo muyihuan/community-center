@@ -46,16 +46,6 @@ public class FeedDO implements Serializable {
     private String content;
 
     /**
-     * feed对应ugc的id
-     */
-    private String sourceId;
-
-    /**
-     * 来源场景类型.
-     */
-    private Integer sourceType;
-
-    /**
      * 来源场景对应的ID.
      */
     private String tags;
@@ -69,6 +59,11 @@ public class FeedDO implements Serializable {
      * 创建时间.
      */
     private Date createTime;
+
+    /**
+     * 来源场景.
+     */
+    private String sourceFrom;
 
     /**
      * 扩展信息.
