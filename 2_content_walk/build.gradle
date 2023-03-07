@@ -27,6 +27,7 @@ dependencies {
 
 
     implementation project(':1_content')
+    implementation project(':5_infrastructure')
 
 
     // 单元测试

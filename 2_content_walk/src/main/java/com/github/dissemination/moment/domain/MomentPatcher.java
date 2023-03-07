@@ -54,7 +54,8 @@ public class MomentPatcher {
     private UserFacade userFacade;
 
     /**
-     * 修补用户朋友圈
+     * 修补用户朋友圈.
+     *
      * @param argument 刷新朋友圈参数
      */
     public void patch(PatchMomentArgument argument) {
@@ -131,9 +132,10 @@ public class MomentPatcher {
     }
 
     /**
-     * 把好友的feed同步到我的收件箱
-     * @param uid 用户ID
-     * @param friendUid 朋友UID
+     * 把好友的feed同步到我的朋友圈.
+     *
+     * @param uid 用户ID.
+     * @param friendUid 朋友UID.
      */
     private void copyFriendFeedToMe(String uid, Date userRegisterTime, String friendUid) {
         if(StringUtils.isEmpty(uid) || StringUtils.isEmpty(friendUid)) {
