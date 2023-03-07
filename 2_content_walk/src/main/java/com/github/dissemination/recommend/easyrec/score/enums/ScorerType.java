@@ -17,7 +17,7 @@ public enum ScorerType {
     private int type;
     private String desc;
 
-    private ScorerType(int type, String desc) {
+    ScorerType(int type, String desc) {
         this.type = type;
         this.desc = desc;
     }
