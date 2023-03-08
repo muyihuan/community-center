@@ -1,6 +1,3 @@
 ##社区中心平台
 
-
-1.一键式搭建一个社区
-2.配置db、缓存、es等底层依赖
-3.一键自动创建表、索引等
+相关文档：https://l4h83azj7r.feishu.cn/docx/FO9Jd7P4woSgg0xPahucwxAUnJg
