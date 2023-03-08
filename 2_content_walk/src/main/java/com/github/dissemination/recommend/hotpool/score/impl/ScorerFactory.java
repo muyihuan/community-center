@@ -1,10 +1,9 @@
-package com.github.dissemination.recommend.easyrec.score.impl;
+package com.github.dissemination.recommend.hotpool.score.impl;
 
-import com.github.dissemination.recommend.easyrec.score.Scorer;
-import com.github.dissemination.recommend.easyrec.score.enums.ScorerType;
+import com.github.dissemination.recommend.hotpool.score.Scorer;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 评分器的工厂类.
@@ -13,11 +12,12 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ScorerFactory {
 
-    private static Map<ScorerType, Scorer> SCORETR_MAP = new ConcurrentHashMap<>();
+    private static Map<ScorerType, Scorer> SCORER_MAP = new HashMap<>();
 
     /**
-     * 获取评分器
-     * @param type 评分器类型
+     * 获取评分器.
+     *
+     * @param type 评分器类型.
      */
     public static Scorer getScorer(ScorerType type) {
         if(type == null) {
@@ -25,13 +25,13 @@ public class ScorerFactory {
         }
 
         synchronized (type) {
-            Scorer scorer = SCORETR_MAP.get(type);
+            Scorer scorer = SCORER_MAP.get(type);
             if(scorer != null) {
                 return scorer;
             }
 
             scorer = getScorerByType(type);
-            SCORETR_MAP.put(type, scorer);
+            SCORER_MAP.put(type, scorer);
             return scorer;
         }
     }

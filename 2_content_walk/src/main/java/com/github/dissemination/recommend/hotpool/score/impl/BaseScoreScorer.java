@@ -1,9 +1,9 @@
-package com.github.dissemination.recommend.easyrec.score.impl;
+package com.github.dissemination.recommend.hotpool.score.impl;
 
 import com.github.content.ugc.domain.ContentCarrier;
-import com.github.dissemination.recommend.easyrec.score.Result;
-import com.github.dissemination.recommend.easyrec.score.Scorer;
-import com.github.dissemination.recommend.easyrec.score.bias.CommonBiasModel;
+import com.github.dissemination.recommend.hotpool.score.Result;
+import com.github.dissemination.recommend.hotpool.score.Scorer;
+import com.github.dissemination.recommend.hotpool.score.bias.CommonBiasModel;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.List;

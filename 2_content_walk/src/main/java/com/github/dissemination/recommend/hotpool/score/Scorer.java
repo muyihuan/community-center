@@ -1,4 +1,4 @@
-package com.github.dissemination.recommend.easyrec.score;
+package com.github.dissemination.recommend.hotpool.score;
 
 import com.github.content.ugc.domain.ContentCarrier;
 

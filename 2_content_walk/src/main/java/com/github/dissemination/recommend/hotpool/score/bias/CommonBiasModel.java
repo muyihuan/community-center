@@ -1,4 +1,4 @@
-package com.github.dissemination.recommend.easyrec.score.bias;
+package com.github.dissemination.recommend.hotpool.score.bias;
 
 import com.github.content.ugc.domain.ContentCarrier;
 

@@ -1,4 +1,4 @@
-package com.github.dissemination.recommend.easyrec.score.enums;
+package com.github.dissemination.recommend.hotpool.score.impl;
 
 import lombok.Getter;
 
@@ -14,11 +14,11 @@ public enum ScorerType {
     INTERACTIVE_SCORER(1, "互动评分"),
     TIME_DECAY_SCORER(2, "热度时间衰减");
 
-    private int type;
+    private int code;
     private String desc;
 
-    ScorerType(int type, String desc) {
-        this.type = type;
+    ScorerType(int code, String desc) {
+        this.code = code;
         this.desc = desc;
     }
 }

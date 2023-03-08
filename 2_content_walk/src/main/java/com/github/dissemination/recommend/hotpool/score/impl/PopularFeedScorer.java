@@ -1,8 +1,8 @@
-package com.github.dissemination.recommend.easyrec.score.impl;
+package com.github.dissemination.recommend.hotpool.score.impl;
 
 import com.github.content.ugc.domain.ContentCarrier;
-import com.github.dissemination.recommend.easyrec.score.Result;
-import com.github.dissemination.recommend.easyrec.score.Scorer;
+import com.github.dissemination.recommend.hotpool.score.Result;
+import com.github.dissemination.recommend.hotpool.score.Scorer;
 
 import java.util.List;
 import java.util.Map;
