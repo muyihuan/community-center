@@ -1,6 +1,6 @@
 package com.github.dissemination.recommend.hotpool.score.bias;
 
-import com.github.content.ugc.domain.ContentCarrier;
+import com.github.content.ContentCarrier;
 
 /**
  * 通用偏差值

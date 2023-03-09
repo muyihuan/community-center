@@ -1,8 +1,10 @@
 package com.github.content.ugc.domain;
 
+import com.github.content.feed.exception.FeedException;
 import com.github.content.ugc.domain.enums.ContentCarrierTypeEnum;
-import com.github.content.ugc.domain.model.Content;
-import com.github.content.ugc.domain.model.UgcModel;
+import com.github.content.ugc.domain.enums.UgcTypeEnum;
+import com.github.content.ugc.domain.model.*;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,7 +25,31 @@ public class UgcDomainService {
      * @return ugc的ID.
      */
     public Long createUgc(String uid, Content content, ContentCarrierTypeEnum carrierType, String carrierId) {
-        return 0L;
+        if(StringUtils.isEmpty(uid) || content == null) {
+            throw new FeedException();
+        }
+
+        Long id = 0L;
+        UgcTypeEnum ugcType = content.getUgcType();
+        if(content.getUgcType() == UgcTypeEnum.TEXT) {
+            Text text = (Text) content;
+            return id;
+        }
+        else if(ugcType == UgcTypeEnum.IMAGE) {
+            Image image = (Image) content;
+            return id;
+        }
+        else if(ugcType == UgcTypeEnum.AUDIO) {
+            Audio audio = (Audio) content;
+            return id;
+        }
+        else if(ugcType == UgcTypeEnum.VIDEO) {
+            Video video = (Video) content;
+            return id;
+        }
+        else {
+            throw new FeedException();
+        }
     }
 
     /**

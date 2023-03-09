@@ -8,7 +8,7 @@ import com.github.content.feed.domain.model.property.AtInfo;
 import com.github.content.feed.domain.model.property.ExtraInfo;
 import com.github.content.feed.domain.model.property.LbsInfo;
 import com.github.content.feed.domain.model.ugc.*;
-import com.github.content.ugc.domain.ContentCarrier;
+import com.github.content.ContentCarrier;
 import com.github.content.ugc.domain.enums.ContentCarrierTypeEnum;
 import lombok.Getter;
 import lombok.Setter;

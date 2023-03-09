@@ -1,4 +1,4 @@
-package com.github.content.ugc.domain;
+package com.github.content;
 
 import com.github.content.ugc.domain.enums.ContentCarrierTypeEnum;
 

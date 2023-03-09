@@ -1,6 +1,6 @@
 package com.github.dissemination.recommend.hotpool.score;
 
-import com.github.content.ugc.domain.ContentCarrier;
+import com.github.content.ContentCarrier;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

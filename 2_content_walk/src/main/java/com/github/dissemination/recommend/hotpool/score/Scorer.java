@@ -1,6 +1,6 @@
 package com.github.dissemination.recommend.hotpool.score;
 
-import com.github.content.ugc.domain.ContentCarrier;
+import com.github.content.ContentCarrier;
 
 import java.util.List;
 import java.util.Map;

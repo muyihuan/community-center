@@ -1,6 +1,6 @@
 package com.github.dissemination.recommend.hotpool.score.impl;
 
-import com.github.content.ugc.domain.ContentCarrier;
+import com.github.content.ContentCarrier;
 import com.github.dissemination.recommend.hotpool.score.Result;
 import com.github.dissemination.recommend.hotpool.score.Scorer;
 import com.github.dissemination.recommend.hotpool.score.bias.CommonBiasModel;

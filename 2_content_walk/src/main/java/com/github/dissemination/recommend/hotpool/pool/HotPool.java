@@ -34,6 +34,10 @@ public class HotPool {
 
     }
 
+    public Long nextPool() {
+        return 0L;
+    }
+
     public void destroy() {
 
     }
