@@ -7,7 +7,6 @@ import com.github.dissemination.mine.domain.repo.model.MineContentDO;
 import com.google.common.collect.ImmutableMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,15 +16,14 @@ import java.util.Map;
  * 个人动态数据存储/计算/缓存处理.
  * @author yanghuan
  */
-@Service
-public class MineContentRepository {
+public interface MineContentRepository {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MineContentRepository.class);
+    Logger LOGGER = LoggerFactory.getLogger(MineContentRepository.class);
 
     /**
      * 不同身份可见范围配置
      */
-    private static final Map<IdentityType, List<PrivilegeType>> IDENTITY_PRIVILEGE_CONFIG = ImmutableMap.of(
+    Map<IdentityType, List<PrivilegeType>> IDENTITY_PRIVILEGE_CONFIG = ImmutableMap.of(
             IdentityType.MYSELF, Arrays.asList(PrivilegeType.FRIEND_VISIBLE, PrivilegeType.ALL_VISIBLE, PrivilegeType.STRANGER_VISIBLE, PrivilegeType.SELF_VISIBLE),
             IdentityType.FRIEND, Arrays.asList(PrivilegeType.FRIEND_VISIBLE, PrivilegeType.ALL_VISIBLE),
             IdentityType.STRANGER, Arrays.asList(PrivilegeType.STRANGER_VISIBLE, PrivilegeType.ALL_VISIBLE),
@@ -36,9 +34,7 @@ public class MineContentRepository {
      *
      * @param mineContentDO 个人页记录信息.
      */
-    public void saveUserFeed(MineContentDO mineContentDO) {
-
-    }
+    void saveUserFeed(MineContentDO mineContentDO);
 
     /**
      * 删除内容.
@@ -47,9 +43,7 @@ public class MineContentRepository {
      * @param carrierType 内容载体类型.
      * @param contentCarrierId 内容载体ID.
      */
-    public void deleteUserFeed(String uid, ContentCarrierTypeEnum carrierType, Long contentCarrierId) {
-
-    }
+    void deleteUserFeed(String uid, ContentCarrierTypeEnum carrierType, Long contentCarrierId);
 
     /**
      * 获取个人动态.
@@ -61,7 +55,5 @@ public class MineContentRepository {
      * @param count 获取数量.
      * @return 内容列表.
      */
-    public List<Long> queryUserFeeds(IdentityType visitorIdentity, String beVisitUid, ContentCarrierTypeEnum carrierType, Long maxId, Integer count) {
-        return null;
-    }
+    List<Long> queryUserFeeds(IdentityType visitorIdentity, String beVisitUid, ContentCarrierTypeEnum carrierType, Long maxId, Integer count);
 }

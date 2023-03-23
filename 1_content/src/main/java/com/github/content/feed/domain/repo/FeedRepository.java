@@ -3,7 +3,6 @@ package com.github.content.feed.domain.repo;
 import com.github.content.feed.domain.enums.FeedPrivilegeEnum;
 import com.github.content.feed.domain.enums.FeedStateEnum;
 import com.github.content.feed.domain.repo.model.FeedDO;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,48 +11,35 @@ import java.util.List;
  *
  * @author yanghuan
  */
-@Service
-public class FeedRepository {
+public interface FeedRepository {
 
     /**
      * 创建feed.
      */
-    public void createFeed(FeedDO feedSource) {
-
-    }
+    void createFeed(FeedDO feedSource);
 
     /**
      * 更新feed状态.
      */
-    public void updateFeedState(Long feedId, FeedStateEnum state) {
-
-    }
+    void updateFeedState(Long feedId, FeedStateEnum state);
 
     /**
      * 更新feed可见范围.
      */
-    public void updateFeedPrivilege(Long feedId, FeedPrivilegeEnum targetPrivilege) {
-
-    }
+    void updateFeedPrivilege(Long feedId, FeedPrivilegeEnum targetPrivilege);
 
     /**
      * 更新feed话题信息.
      */
-    public void updateFeedTags(Long feedId, String tags) {
-
-    }
+    void updateFeedTags(Long feedId, String tags);
 
     /**
      * 获取feed信息.
      */
-    public FeedDO getFeedById(Long feedId) {
-        return null;
-    }
+    FeedDO getFeedById(Long feedId);
 
     /**
      * 批量获取feed信息.
      */
-    public List<FeedDO> batchGetFeedByIds(List<Long> feedIds) {
-        return null;
-    }
+    List<FeedDO> batchGetFeedByIds(List<Long> feedIds);
 }

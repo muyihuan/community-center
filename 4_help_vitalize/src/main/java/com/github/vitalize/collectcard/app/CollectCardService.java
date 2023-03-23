@@ -68,8 +68,6 @@ public class CollectCardService {
     @Autowired
     private SceneService sceneService;
 
-    public static final List<Long> DEFAULT_GROUP = Arrays.asList(1L,2L,3L,4L,5L,6L);
-
     private static final String KEY_COLLECT_CARD_ISSUED_LOCK = "c:c:issued:user:lock:";
     private static final String KEY_COLLECT_CARD_MODIFY_LOCK = "c:c:modify:user:lock:";
 

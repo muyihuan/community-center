@@ -2,13 +2,10 @@ package com.github.dissemination.moment.domain.repo;
 
 import com.github.content.feed.exception.FeedException;
 import com.github.content.ugc.domain.enums.ContentCarrierTypeEnum;
-import com.github.dissemination.mine.infra.FriendFacade;
 import com.github.dissemination.moment.domain.repo.model.MomentRecordDO;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
@@ -20,26 +17,22 @@ import java.util.concurrent.TimeUnit;
  *
  * @author yanghuan
  */
-@Service
-public class MomentRepository {
+public interface MomentRepository {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MomentRepository.class);
+    Logger LOGGER = LoggerFactory.getLogger(MomentRepository.class);
 
-    private static ExecutorService executorService = null;
-
-    @Autowired
-    private FriendFacade friendFacade;
+    ExecutorService executorService = null;
 
     /**
      * 朋友圈只混存第页数据，因为每天访问朋友圈中访问第一页的占80%多，第一页缓存20条
      */
-    private static final String ACTIVE_MOMENTS = "moments:feed:list:";
+    String ACTIVE_MOMENTS = "moments:feed:list:";
 
     /**
      * 每个用户每天平均会访问朋友圈10次，所用户访问第一次就几乎很有可能当天再访问第二次。
      * 所以缓存可以采取每次用户访问朋友圈，朋友圈缓存过期时间就累加一天，保证访问频繁的用户的缓存命中率
      */
-    private static final int EXPIRE_TIME = (int) TimeUnit.DAYS.toSeconds(1);
+    int EXPIRE_TIME = (int) TimeUnit.DAYS.toSeconds(1);
 
     /**
      * 获取朋友圈动态.
@@ -50,7 +43,7 @@ public class MomentRepository {
      * @param count 获取数量.
      * @return 动态列表.
      */
-    public List<Long> queryMomentContents(String uid, ContentCarrierTypeEnum carrierType, Long lastId, Integer count) {
+    default List<Long> queryMomentContents(String uid, ContentCarrierTypeEnum carrierType, Long lastId, Integer count) {
         if(StringUtils.isEmpty(uid) || count == null) {
             throw new FeedException();
         }
@@ -64,7 +57,7 @@ public class MomentRepository {
      *
      * @param momentRecord 朋友圈动态信息.
      */
-    public void saveMomentRecord(MomentRecordDO momentRecord) {
+    default void saveMomentRecord(MomentRecordDO momentRecord) {
         if(momentRecord == null) {
             throw new FeedException();
         }
@@ -114,7 +107,7 @@ public class MomentRepository {
      * @param carrierType 内容载体类型.
      * @param contentCarrierId 内容ID.
      */
-    public void remMomentRecord(String friendUid, ContentCarrierTypeEnum carrierType, Long contentCarrierId) {
+    default void remMomentRecord(String friendUid, ContentCarrierTypeEnum carrierType, Long contentCarrierId) {
         if(StringUtils.isEmpty(friendUid) || carrierType == null || contentCarrierId == null) {
             throw new FeedException();
         }
@@ -168,7 +161,7 @@ public class MomentRepository {
      * @param uid 用户ID.
      * @param friendUid 朋友UID.
      */
-    public void delFriendContentFromMe(String uid, String friendUid) {
+    default void delFriendContentFromMe(String uid, String friendUid) {
         if(StringUtils.equals(uid, friendUid)) {
             throw new FeedException();
         }
@@ -198,7 +191,7 @@ public class MomentRepository {
      * @param uid 用户ID.
      * @param momentThreshold 朋友圈动态数量的阈值.
      */
-    public void cleanOverage(String uid, Integer momentThreshold) {
+    default void cleanOverage(String uid, Integer momentThreshold) {
         if(StringUtils.isEmpty(uid) || momentThreshold == null || momentThreshold <= 0) {
             throw new FeedException();
         }
@@ -209,16 +202,14 @@ public class MomentRepository {
     /**
      * 该用户的收件箱是否存在该feed
      */
-    public boolean existFeed(String uid, ContentCarrierTypeEnum carrierType, Long contentCarrierId) {
-        return false;
-    }
+    boolean existFeed(String uid, ContentCarrierTypeEnum carrierType, Long contentCarrierId);
 
     /**
      * 获取用户朋友圈最老的动态.
      *
      * @return 最老的动态ID.
      */
-    public Long getOldestContent(String uid) {
+    default Long getOldestContent(String uid) {
         if(StringUtils.isEmpty(uid)) {
             throw new FeedException();
         }
@@ -232,7 +223,7 @@ public class MomentRepository {
      * @param uid 用户ID.
      * @param friendUid 朋友UID.
      */
-    private void copyFriendFeedToMe(String uid, String friendUid) {
+    default void copyFriendFeedToMe(String uid, String friendUid) {
         if(StringUtils.isEmpty(uid) || StringUtils.isEmpty(friendUid)) {
             throw new FeedException();
         }
@@ -294,7 +285,7 @@ public class MomentRepository {
         }
     }
 
-    private static String getMomentCacheKey(String uid) {
+    default String getMomentCacheKey(String uid) {
         if(StringUtils.isEmpty(uid)) {
             throw new FeedException();
         }
